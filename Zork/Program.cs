@@ -57,7 +57,7 @@ namespace Zork
 
             switch (command)
             {
-                case Commands.NORTH when LocationCoords.Row < Rooms.GetLength(1) - 1: //Come back to this, it might be wrong because you might be looking at the wrong dimension but they just happen to be the same
+                case Commands.NORTH when LocationCoords.Row < Rooms.GetLength(0) - 1:
 
                     ++LocationCoords.Row;
                     didMove = true;
