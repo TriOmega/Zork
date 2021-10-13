@@ -56,6 +56,12 @@ namespace Zork
                             Console.WriteLine("The way is shut!");
                         }
                         break;
+                    case Commands.SCORE:
+                        Console.WriteLine($"Your score would be {Player.Score}, in {Player.Moves} move(s)");
+                        break;
+                    case Commands.REWARD:
+                        Player.Score++;
+                        break;
 
                     default:
                         Console.WriteLine("Unknown command.");
@@ -72,6 +78,17 @@ namespace Zork
 			return game;
         }
 
-        private static Commands ToCommand(string commandString) => Enum.TryParse<Commands>(commandString, ignoreCase: true, out Commands result) ? result : Commands.UNKNOWN;
+        private Commands ToCommand(string commandString)
+        {
+            if (Enum.TryParse<Commands>(commandString, ignoreCase: true, out Commands result))
+            {
+                Player.Moves++;
+                return result;
+            }
+            else
+            {
+                return Commands.UNKNOWN;
+            }
+        }
     }
 }

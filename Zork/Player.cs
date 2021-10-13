@@ -23,6 +23,9 @@ namespace Zork
             }
         }
 
+        public int Score { get; set; }
+        public int Moves { get; set; }
+
         public Player(World world, string startingLocation)
         {
             World = world;
